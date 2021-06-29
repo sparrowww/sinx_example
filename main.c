@@ -16,6 +16,7 @@ int main()
 
     double radNum = M_PI/180 * argSinD;
     printf ("result sinxMath_h = %lf\n", sin(radNum) );
+    system("pause");
     return 0;
 };
 
