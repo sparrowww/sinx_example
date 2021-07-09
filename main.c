@@ -38,7 +38,7 @@ double sinXFunc ( double argSinD )
         sinXAdd = (pow(-1,itrSinX) * pow(radNum,nMulty2Plus1))/factorialFunc(nMulty2Plus1);
         itrSinX++;
         printf ("itrSinX = %d, sinXAdd = %lf\n",itrSinX , sinXAdd );
-        double dabs = sinXAdd*sinXAdd;
+        double dabs = (sinXAdd < 0) ? ( sinXAdd * (-1) ) : sinXAdd;
         sinX += sinXAdd;
         if (dabs < thresholdAdd)
         {
@@ -57,4 +57,8 @@ int factorialFunc (int number)
   }
   return factorialRes;
 };
+
+
+
+
 
