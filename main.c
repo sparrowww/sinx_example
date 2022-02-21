@@ -4,7 +4,7 @@
 
 const double thresholdAdd =  0.000001;
 
-int factorialFunc (int number);
+unsigned factorialFunc (unsigned number);
 
 double sinXFunc ( double argSinD );
 
@@ -30,17 +30,16 @@ double sinXFunc ( double argSinD )
 
     double radNum = M_PI/180 * argSinD;
 
-     printf ("argSinRad = %lf\n", radNum );
+    printf ("argSinRad = %lf\n", radNum );
 
     for (;;)
     {
         int nMulty2Plus1 = 2*itrSinX+1;
         sinXAdd = (pow(-1,itrSinX) * pow(radNum,nMulty2Plus1))/factorialFunc(nMulty2Plus1);
-        itrSinX++;
+        ++itrSinX;
         printf ("itrSinX = %d, sinXAdd = %lf\n",itrSinX , sinXAdd );
-        double dabs = (sinXAdd < 0) ? ( sinXAdd * (-1) ) : sinXAdd;
         sinX += sinXAdd;
-        if (dabs < thresholdAdd)
+        if (fabs(sinXAdd) < thresholdAdd)
         {
             break;
         }
@@ -48,14 +47,16 @@ double sinXFunc ( double argSinD )
     return sinX;
 };
 
-int factorialFunc (int number)
+unsigned factorialFunc (unsigned number)
 {
-  int factorialRes;
-  for (factorialRes = 1; number > 1; number--)
-  {
-      factorialRes *= number;
-  }
-  return factorialRes;
+    if (number == 0 || number == 1)
+    {
+        return 1;
+    }
+    else
+    {
+        return factorialFunc(number - 1) * number;
+    }
 };
 
 
